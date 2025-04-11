@@ -41,7 +41,7 @@ import {
         </View>
         <View>
             <Text>
-                
+
             </Text>
         </View>
   
@@ -93,10 +93,10 @@ import {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContainer}>
               {[
-                { screen: "Screen1", label: "Add Expense" },
-                { screen: "Screen2", label: "Add Income" },
-                { screen: "Screen3", label: "View History" },
-                { screen: "Screen4", label: "Analytics" },
+                 { screen: "Bolo", label: "Bolo" },
+                { screen: "Invoice", label: "Invoice" },
+                { screen: "Ai_Alerts", label: "Ai-Alerts" },
+                { screen: "AccountSnapshots", label: "Account Snapshot" },
               ].map(({ screen, label }) => (
                 <TouchableOpacity
                   key={screen}

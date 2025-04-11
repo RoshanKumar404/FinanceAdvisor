@@ -86,7 +86,7 @@ export default function App() {
         <Stack.Screen name="Bolo" component={Bolo} />
         <Stack.Screen name="Ai" component={Ai_Alerts} />
         <Stack.Screen name="Invoice" component={Invoice} />
-        <Stack.Screen name="AccountSnaps" component={AccountSnapshots} />
+        <Stack.Screen name="AccountSnapshots" component={AccountSnapshots} />
       </Stack.Navigator>
     </NavigationContainer>
   );
