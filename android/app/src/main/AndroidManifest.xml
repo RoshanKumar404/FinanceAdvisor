@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"> <!-- 👈 ADD THIS -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+       <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" tools:ignore="ProtectedPermissions"/>
+    
 
     <application
       android:name=".MainApplication"
@@ -23,7 +26,7 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
-                <uses-permission android:name="android.permission.RECORD_AUDIO" />
+               
         </intent-filter>
       </activity>
     </application>

@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './src/screens/HomeScreen.tsx';
 import { NavigationContainer } from '@react-navigation/native'
-import Transaction from './src/screens/ProfileScreen.tsx';
+import Transaction from './src/screens/Transaction.tsx';
 import Bell from './src/screens/Bell.tsx';
 import React from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ChatBot from './src/screens/ChatBot.tsx';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Bolo from './src/FloatingScreens/Bolo.tsx';
+import Bolo from './src/FloatingScreens/Bolo.js';
 import Ai_Alerts from './src/FloatingScreens/Ai-Alerts.tsx';
 import Invoice from './src/FloatingScreens/Invoice.tsx';
 import AccountSnapshots from './src/FloatingScreens/AccountSnapshots.tsx';

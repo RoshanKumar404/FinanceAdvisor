@@ -74,30 +74,27 @@ export default function Bolo() {
     return true;
   };
 
-  const startRecognizing = async () => {
-    const granted = await requestPermission();
-    if (!granted) return;
-
-    try {
-      await Voice.start("en-US");
-      setError("");
-      setResults([]);
-      setPartialResults([]);
-      setStarted("");
-      setRecognized("");
-      setEnd("");
-    } catch (e) {
-      console.error(e);
+  const startSpeechToText = async () => {
+    if (Voice) {
+        try {
+            await Voice.start('en-US');
+            onSpeechStartHandler();
+        } catch (error) {
+            console.log(error);
+        }
     }
-  };
+};
 
-  const stopRecognizing = async () => {
-    try {
-      await Voice.stop();
-    } catch (e) {
-      console.error(e);
+const stopSpeechToText = async () => {
+    if (Voice) {
+        try {
+            await Voice.stop();
+            onSpeechEndHandler();
+        } catch (error) {
+            console.log(error);
+        }
     }
-  };
+};
 
   const cancelRecognizing = async () => {
     try {
@@ -148,10 +145,10 @@ export default function Bolo() {
       ))}
       <Text style={styles.stat}>{`End: ${end}`}</Text>
 
-      <TouchableHighlight onPress={startRecognizing}>
+      <TouchableHighlight onPress={startSpeechToText}>
         <Text style={styles.action}>🎤 Start</Text>
       </TouchableHighlight>
-      <TouchableHighlight onPress={stopRecognizing}>
+      <TouchableHighlight onPress={stopSpeechToText}>
         <Text style={styles.action}>🛑 Stop</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={cancelRecognizing}>
