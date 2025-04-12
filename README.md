@@ -130,12 +130,11 @@ If you encounter build issues or unexpected behavior:
 03557239-b643-4f89-89fd-3480ba59c6f1)
 ![3](https://github.com/user-attachments/assets/e6c8c9f5-bfee-41bd-8e34-eca3f93a9305)
 
-<!-- Drop screenshots or gi![IMG-20250412-WA0002](https://github.com/user-attachments/assets/87d7e2d1-a9f8-4868-b1c3-cfff24b3a6e4)
-fs here -->
-<!-- !![IMG-20250412-WA0003](https://github.com/user-attachments/assets/e353250f-ae32-462a-9628-1e49b2afae85)![IMG-20250412-WA0004](https://github.com/user-attachments/assets/b905fc7b-dc9c-4ba7-9e38-ef10185b587a)![IMG-20250412-WA0005](https://github.com/user-attachments/assets/daae9987-c000-4cfe-9263-152c60df8f8d)
 
 
-[Dashboard](./assets/dashboard.png) -->
+
+[Da![7](https://github.com/user-attachments/assets/871faf8d-57eb-4e82-9da6-be4182e26329)
+shboard](./assets/dashboard.png) -->
 ![WhatsApp Image 2025-04-12 at 06 57 09_ba34594d](https://github.com/user-attachments/assets/dd4182af-5e07-4851-b01c-6df4105bc33a)
 
 ---
@@ -146,11 +145,3 @@ Feel free to open issues or PRs if you'd like to contribute!
 
 ---
 
-## 📄 License
-
-[MIT](LICENSE)
-```
-
----
-
-Would you like me to add badges (e.g., version, build passing), or generate a license file too?
