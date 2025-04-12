@@ -126,7 +126,9 @@ If you encounter build issues or unexpected behavior:
 ## 📸 Screenshots
 ![2](https://github.com/user-attachments![IMG-20250412-WA0004](https://github.com/user-attachments/assets/ca35bd7d-7abf-4e40-8521-e6066dc92149)
 /assets/1da72d64-8340-4a3c-b582-fc02a12d120d)
-![1](https://github.com/user-attachments/assets/03557239-b643-4f89-89fd-3480ba59c6f1)
+![1](https://github.com/user-attachments/assets/![5](https://github.com/user-attachments/assets/deb1b0f8-aedb-4461-9305-1ba2fc4f3cfc)
+03557239-b643-4f89-89fd-3480ba59c6f1)
+![3](https://github.com/user-attachments/assets/e6c8c9f5-bfee-41bd-8e34-eca3f93a9305)
 
 <!-- Drop screenshots or gi![IMG-20250412-WA0002](https://github.com/user-attachments/assets/87d7e2d1-a9f8-4868-b1c3-cfff24b3a6e4)
 fs here -->
