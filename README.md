@@ -1,6 +1,3 @@
-Here’s a polished and informative `README.md` for your **FinanceAdvisor** React Native project, based on your `package.json`. I’ve left space for images and added sections that match your setup, including dependencies like `react-native-chart-kit`, `voice`, `tts`, and navigation.
-
----
 
 ```markdown
 # 💸 FinanceAdvisor
