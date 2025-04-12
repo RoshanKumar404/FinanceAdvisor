@@ -6,14 +6,15 @@ import {
     SafeAreaView,
     FlatList,
     Modal,
+    Image,
   } from "react-native";
   import React, { useState } from "react";
   import Icon from "react-native-vector-icons/Ionicons";
   import { useNavigation } from "@react-navigation/native";
   
   export default function HomeScreen() {
-    const [balanceVisible, setBalanceVisible] = useState(false); // ✅ Boolean
-    const [balance, setBalance] = useState(10000); // ✅ Defined balance
+    const [balanceVisible, setBalanceVisible] = useState(false);
+    const [balance, setBalance] = useState(10000);
     const [modalVisible, setModalVisible] = useState(false);
     const navigation = useNavigation();
   
@@ -32,17 +33,14 @@ import {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.headerRow}>
+          <Text style={styles.appName}>Smart Cash</Text>
           <TouchableOpacity onPress={() => setBalanceVisible(!balanceVisible)}>
-            <Icon name={"eye-off"} size={34} color="#7c2a6a" />
+            <Icon name={balanceVisible ? "eye" : "eye-off"} size={34} color="#7c2a6a" />
           </TouchableOpacity>
+  
           <View style={styles.profileCircle}>
             <Text style={styles.profileText}>ME</Text>
           </View>
-        </View>
-        <View>
-            <Text>
-
-            </Text>
         </View>
   
         <View style={styles.balanceCard}>
@@ -92,11 +90,12 @@ import {
         <Modal visible={modalVisible} transparent animationType="slide">
           <View style={styles.modalOverlay}>
             <View style={styles.modalContainer}>
-              {[
-                 { screen: "Bolo", label: "Bolo" },
+              {[ 
+                { screen: "Bolo", label: "Bolo" },
                 { screen: "Invoice", label: "Invoice" },
                 { screen: "Ai_Alerts", label: "Ai-Alerts" },
                 { screen: "AccountSnapshots", label: "Account Snapshot" },
+                { screen: "PaidPrimeFeatures", label: "Paid Prime Features" },
               ].map(({ screen, label }) => (
                 <TouchableOpacity
                   key={screen}
@@ -137,6 +136,12 @@ import {
       alignItems: "center",
       marginBottom: 16,
       margin: 20,
+    },
+    appName: {
+      fontSize: 22,
+      color: "#10B981",
+      fontWeight: "bold",
+      marginRight: 10,
     },
     Expensebackground: {
       flexDirection: "row",
