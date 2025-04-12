@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import RNAndroidNotificationListener from 'react-native-android-notification-listener';
 
 const Transaction = () => {
   const [permissionStatus, setPermissionStatus] = useState('unknown');
-  const [notifications, setNotifications] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     const init = async () => {
@@ -19,7 +19,7 @@ const Transaction = () => {
 
     const interval = setInterval(() => {
       fetchNotifications();
-    }, 5000); // Fetch every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -28,53 +28,81 @@ const Transaction = () => {
     try {
       const storedNotifications = await RNAndroidNotificationListener.getNotifications();
       const parsed = JSON.parse(storedNotifications);
-      setNotifications(parsed || []);
+      const transactions = extractTransactions(parsed);
+      setTransactions(transactions);
     } catch (e) {
       console.log('❌ Failed to fetch notifications:', e);
     }
   };
 
+  const extractTransactions = (notifications) => {
+    return notifications
+      .filter(n =>
+        n.text &&
+        (n.text.includes('credited') || n.text.includes('debited') || n.text.includes('received'))
+      )
+      .map((n, index) => {
+        const amountMatch = n.text.match(/₹[\d,]+/);
+        const descMatch = n.text.match(/(?:for|towards|via)\s(.+?)(?:\.|$)/i);
+        return {
+          id: `TXN${index + 1}${Math.floor(Math.random() * 1000)}`,
+          date: new Date(n.time).toLocaleDateString('en-IN', {
+            day: '2-digit', month: 'short', year: 'numeric'
+          }),
+          time: new Date(n.time).toLocaleTimeString('en-IN'),
+          amount: amountMatch ? amountMatch[0] : '₹0',
+          description: descMatch ? descMatch[1] : 'Bank Transaction',
+        };
+      });
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>📲 Notification Polling</Text>
-      <Text style={styles.permission}>
-        Permission: {permissionStatus === 'authorized' ? '✅ Authorized' : '❌ Not Authorized'}
-      </Text>
+      <Text style={styles.title}>🧾 Transaction History</Text>
+      <ScrollView horizontal>
+        <View style={styles.table}>
+          <View style={styles.headerRow}>
+            <Text style={styles.header}>TRANSACTION ID</Text>
+            <Text style={styles.header}>DATE AND TIME</Text>
+            <Text style={styles.header}>AMOUNT</Text>
+            <Text style={styles.header}>DESCRIPTION</Text>
+          </View>
 
-      <ScrollView style={styles.notifications}>
-        {notifications.length === 0 ? (
-          <Text style={styles.noNotifications}>No notifications yet.</Text>
-        ) : (
-          notifications.map((item, idx) => (
-            <View key={idx} style={styles.card}>
-              <Text style={styles.app}>{item.app}</Text>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text>{item.text}</Text>
-              <Text style={styles.time}>{item.time}</Text>
+          {transactions.map((txn, index) => (
+            <View key={index} style={styles.row}>
+              <Text style={styles.cell}>{txn.id}</Text>
+              <Text style={styles.cell}>{txn.date} {txn.time}</Text>
+              <Text style={styles.cell}>{txn.amount}</Text>
+              <Text style={styles.cell}>{txn.description}</Text>
             </View>
-          ))
-        )}
+          ))}
+        </View>
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, backgroundColor: '#F6F8FC' },
-  header: { fontSize: 22, fontWeight: 'bold', marginBottom: 12 },
-  permission: { fontSize: 16, marginBottom: 8 },
-  notifications: { flex: 1 },
-  noNotifications: { textAlign: 'center', color: '#888', marginTop: 40 },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 10,
-    elevation: 2,
+  container: { flex: 1, padding: 16, backgroundColor: '#1F1B18' },
+  title: { fontSize: 22, fontWeight: 'bold', color: '#fff', marginBottom: 16 },
+  table: { borderWidth: 1, borderColor: '#fff' },
+  headerRow: { flexDirection: 'row', backgroundColor: '#4D4035' },
+  row: { flexDirection: 'row', borderTopWidth: 1, borderColor: '#fff' },
+  header: {
+    flex: 1,
+    color: '#fff',
+    fontWeight: 'bold',
+    padding: 10,
+    borderRightWidth: 1,
+    borderColor: '#fff',
   },
-  app: { fontWeight: 'bold', color: '#2D88FF' },
-  title: { fontSize: 16, fontWeight: 'bold' },
-  time: { fontSize: 12, color: '#999', marginTop: 4 },
+  cell: {
+    flex: 1,
+    color: '#fff',
+    padding: 10,
+    borderRightWidth: 1,
+    borderColor: '#fff',
+  },
 });
 
 export default Transaction;
