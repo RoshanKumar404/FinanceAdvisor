@@ -59,20 +59,20 @@ export default function Bolo() {
     };
   }, []);
 
-  const requestPermission = async () => {
-    if (Platform.OS === "android") {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
-        );
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
-      } catch (err) {
-        console.warn(err);
-        return false;
-      }
-    }
-    return true;
-  };
+  // const requestPermission = async () => {
+  //   if (Platform.OS === "android") {
+  //     try {
+  //       const granted = await PermissionsAndroid.request(
+  //         PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
+  //       );
+  //       return granted === PermissionsAndroid.RESULTS.GRANTED;
+  //     } catch (err) {
+  //       console.warn(err);
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // };
 
   const startSpeechToText = async () => {
     if (Voice) {
@@ -125,7 +125,7 @@ const stopSpeechToText = async () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>🎙️ Speech to Text (React Native)</Text>
+      <Text style={styles.welcome}> Speech to Text </Text>
       <Text style={styles.instructions}>Press the button and start speaking.</Text>
       <Text style={styles.stat}>{`Started: ${started}`}</Text>
       <Text style={styles.stat}>{`Recognized: ${recognized}`}</Text>

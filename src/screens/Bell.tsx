@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import UPI from 'react-native-upi-intent';
 
-const PaymentScreen = () => {
+const Bell = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -107,4 +107,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PaymentScreen;
+export default Bell;
+// import { StyleSheet, Text, View } from 'react-native'
+// import React from 'react'
+
+// export default function Bell() {
+//   return (
+//     <View>
+//       <Text>Bell</Text>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({})
